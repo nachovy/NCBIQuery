@@ -1,4 +1,4 @@
-# NCBIQuery
+ # NCBIQuery
 Python tool of National Center for Biotechnology Information (NCBI) paper query based on [E-utilities](https://dataguide.nlm.nih.gov/eutilities/utilities.html).
 
 Installing
@@ -18,7 +18,7 @@ Query paper ids from search text.
 Arguments:
 | Parameter                 | Default       | Description   |   
 | :------------------------ |:-------------:| :-------------|
-| db           |    pubmed           |  The database from which you search from |
+| db           |    pubmed           |  The database which you search from |
 | search_field_tags          | tw           | A list of (or a single) search field tag(s) |
 | contents         |                    | A list of (or a single) search content(s) corresponding to each tag |
 | retmax           |        5000            | The maximum number of papers to return (cannot exceed 5000) |
@@ -31,7 +31,7 @@ Get paper abstracts from search text.
 Arguments:
 | Parameter                 | Default       | Description   |   
 | :------------------------ |:-------------:| :-------------|
-| db           |    pubmed           |  The database from which you search from |
+| db           |    pubmed           |  The database which you search from |
 | search_field_tags          | tw           | A list of (or a single) search field tag(s) |
 | contents         |                    | A list of (or a single) search content(s) corresponding to each tag |
 | retmax           |        5000            | The maximum number of papers to return (cannot exceed 5000) |
@@ -54,4 +54,5 @@ Example
 =====
     >>> import NCBIQuery
     >>> print(NCBIQuery.query_id('pubmed', ['tw'], ['cell'],retmax=50))
-    >>> print(NCBIQuery.query_abstract('pubmed', ['tw','pt'], ['cell','review'],retmax=50))
+    >>> print(NCBIQuery.query_abstract('pubmed', ['tw','pt', 'dp'], ['cell','review', '1990/01/01:2023/01/01'], retmax=50))
+    >>> print()

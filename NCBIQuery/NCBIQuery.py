@@ -4,8 +4,10 @@ import requests
 import xml.etree.ElementTree as ET
 from tokenizers import ByteLevelBPETokenizer
 
+
+base = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/'
+
 def query_id(db='pubmed', search_field_tags='tw', contents='', retmax=5000):
-    base = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/'
     if not isinstance(search_field_tags, list):
         search_field_tags = [search_field_tags]
     if not isinstance(contents, list):
@@ -29,7 +31,6 @@ def query_id(db='pubmed', search_field_tags='tw', contents='', retmax=5000):
 
 def id_abstract(search_ids, db='pubmed'):
     def get_article_info(article_ids):
-        base = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/'
         url = base + 'efetch.fcgi'
         res = requests.post(url, data={'db':db, 'id':article_ids}).content
         et = ET.fromstring(res)

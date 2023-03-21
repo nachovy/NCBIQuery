@@ -1,12 +1,14 @@
 from setuptools import setup, find_packages
 
+exec(open("NCBIQuery/version.py").read())
+
 setup(
     name='NCBIQuery',
-    version='1.0',
+    version=__version__,
     license='Delt4',
     author="Leo Sun",
     author_email='zidaneandmessi@gmail.com',
-    packages=find_packages(),
+    packages=['NCBIQuery'],
     url='https://github.com/nachovy/NCBIQuery',
     keywords='NCBI',
     install_requires=[
