@@ -12,7 +12,6 @@ setup(
     url='https://github.com/nachovy/NCBIQuery',
     keywords='NCBI',
     install_requires=[
-          'html',
           'requests',
           'tokenizers',
       ],

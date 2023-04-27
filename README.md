@@ -21,7 +21,7 @@ Arguments:
 | db           |    pubmed           |  The database which you search from |
 | search_field_tags          | tw           | A list of (or a single) search field tag(s) |
 | contents         |                    | A list of (or a single) search content(s) corresponding to each tag |
-| retmax           |        5000            | The maximum number of papers to return (cannot exceed 5000) |
+| retmax           |        10000            | The maximum number of papers to return (cannot exceed 10000) |
 
 Return: A list of paper ids.
 ### query_abstract()
@@ -34,7 +34,7 @@ Arguments:
 | db           |    pubmed           |  The database which you search from |
 | search_field_tags          | tw           | A list of (or a single) search field tag(s) |
 | contents         |                    | A list of (or a single) search content(s) corresponding to each tag |
-| retmax           |        5000            | The maximum number of papers to return (cannot exceed 5000) |
+| retmax           |        10000            | The maximum number of papers to return (cannot exceed 10000) |
 
 Return: A list of paper abstracts.
 

@@ -7,7 +7,7 @@ from tokenizers import ByteLevelBPETokenizer
 
 base = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/'
 
-def query_id(db='pubmed', search_field_tags='tw', contents='', retmax=5000):
+def query_id(db='pubmed', search_field_tags='tw', contents='', retmax=10000):
     if not isinstance(search_field_tags, list):
         search_field_tags = [search_field_tags]
     if not isinstance(contents, list):
@@ -19,7 +19,7 @@ def query_id(db='pubmed', search_field_tags='tw', contents='', retmax=5000):
     for i in range(1, n):
         query_string += ' AND ' + contents[i] + '[' + search_field_tags[i] + ']'
     query_string = html.escape(query_string)
-    retmax = min(retmax, 5000) # Maximum number of results returning for a query is 5000
+    retmax = min(retmax, 10000) # Maximum number of results returning for a query is 10000
     search_url = base + 'esearch.fcgi?db=' + db + '&term=' + query_string + '&usehistory=y&retmax=' + str(retmax) + '&sort=relevance' # Records are sorted based on relevance to your search. For more information about PubMed’s relevance ranking, see the PubMed Help section on Computation of Weighted Relevance Order in PubMed.
     res = requests.get(search_url).content
     search_et = ET.fromstring(res)
@@ -49,6 +49,6 @@ def id_abstract(search_ids, db='pubmed'):
                 break
     return article_abstracts
 
-def query_abstract(db='pubmed', search_field_tags='tw', contents='', retmax=5000):
+def query_abstract(db='pubmed', search_field_tags='tw', contents='', retmax=10000):
     search_ids = query_id(db, search_field_tags, contents, retmax)
     return id_abstract(search_ids, db)
