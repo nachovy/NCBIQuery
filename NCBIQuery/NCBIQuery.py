@@ -40,13 +40,13 @@ def id_abstract(search_ids, db='pubmed'):
     article_abstracts = []
     article_infos = get_article_info(search_ids)
     for article in article_infos:
+        abstract = ''
         for child in article.iter('*'):
             if child.tag == 'AbstractText':
                 if child.text is not None:
-                    article_abstracts.append(child.text)
-                else:
-                    article_abstracts.append('')
+                    abstract = child.text
                 break
+        article_abstracts.append(abstract)
     return article_abstracts
 
 def query_abstract(db='pubmed', search_field_tags='tw', contents='', retmax=10000):
